@@ -206,7 +206,7 @@ header.top nav a.on{border-color:var(--accent);color:var(--accent-text)}
 .hl.wide{grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr))}
 .hl h4{font:700 .95rem var(--sans);color:var(--accent-text);margin:.1rem 0 .5rem}
 .hl p+p{margin-top:.7rem}
-.lead{max-width:80ch;margin:0 0 1.5rem;font-size:1.05rem;line-height:1.75}
+.lead{max-width:none;margin:0 0 1.5rem;font-size:1.05rem;line-height:1.75;text-align:justify;-webkit-hyphens:auto;hyphens:auto}
 .contact{padding-bottom:4rem}
 .contact .links{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1rem}
 .btn{display:inline-block;padding:.7rem 1.2rem;border:2px solid var(--accent);border-radius:3px;font-weight:600;text-decoration:none;color:var(--accent-text)}
