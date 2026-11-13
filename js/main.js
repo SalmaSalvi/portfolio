@@ -17,7 +17,7 @@ addEventListener("scroll",sc,{passive:true});sc();
 if("IntersectionObserver" in window){
 var links={};[].forEach.call(d.querySelectorAll("header.top nav a"),function(a){links[a.getAttribute("href").slice(1)]=a});
 var so=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){for(var k in links)links[k].classList.toggle("on",k===x.target.id)}})},{rootMargin:"-40% 0px -55% 0px"});
-["about","experience","education","skills","contact"].forEach(function(id){var s=d.getElementById(id);if(s)so.observe(s)});
+["about","experience","education","skills","activities","contact"].forEach(function(id){var s=d.getElementById(id);if(s)so.observe(s)});
 }
 var lb=d.querySelector(".lb"),lbi=lb.querySelector("img"),last=null;
 function closeLB(){lb.hidden=true;lbi.removeAttribute("src");d.body.style.overflow="";if(last)last.focus()}
