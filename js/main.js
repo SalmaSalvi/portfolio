@@ -29,6 +29,6 @@ d.addEventListener("keydown",function(e){if(e.key==="Escape"&&!lb.hidden)closeLB
 var root=document.documentElement,btns=[].slice.call(document.querySelectorAll(".sw")),KEY="sa-accent";
 function set(c){root.setAttribute("data-accent",c);btns.forEach(function(b){b.setAttribute("aria-pressed",b.getAttribute("data-c")===c?"true":"false")})}
 var s=null;try{s=localStorage.getItem(KEY)}catch(e){}
-set(s==="teal"?"teal":"indigo");
+set(s==="teal"||s==="pink"?s:"indigo");
 btns.forEach(function(b){b.addEventListener("click",function(){var c=b.getAttribute("data-c");set(c);try{localStorage.setItem(KEY,c)}catch(e){}})});
 })();
