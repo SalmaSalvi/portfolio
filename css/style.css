@@ -191,6 +191,17 @@ header.top nav a.on{border-color:var(--accent);color:var(--accent-text)}
 @media (prefers-color-scheme:dark){:root[data-accent="pink"]:not([data-theme="light"]){--bg:#1f0f19;--paper:#2a1622;--ink:#fbe7f1;--muted:#d3a8bf;--rule:#4d2a3f;--accent:#f472b6;--accent-ink:#2a0f1d;--accent-text:#f9a8d4}}
 :root[data-accent="pink"][data-theme="dark"]{--bg:#1f0f19;--paper:#2a1622;--ink:#fbe7f1;--muted:#d3a8bf;--rule:#4d2a3f;--accent:#f472b6;--accent-ink:#2a0f1d;--accent-text:#f9a8d4}
 .sw[data-c="pink"]{background:#f472b6}
+/* hero buttons */
+.hero .links{align-items:center}
+.hero .links .btn{border-radius:999px;padding-left:1.6rem;padding-right:1.6rem}
+.hero .links .btn.li{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;padding:0}
+.btn.li svg{width:1.4rem;height:1.4rem;fill:currentColor}
+.hero .links .btn.li:hover{background:#0a66c2;border-color:#0a66c2;color:#fff;box-shadow:0 0 0 1px #0a66c2,0 0 22px 2px rgba(10,102,194,.55),0 0 46px 6px rgba(10,102,194,.25)}
+/* icons fill with their own brand color on hover */
+.social a[aria-label="Email"]{--b:#ea4335}
+.social a[aria-label="LinkedIn"]{--b:#0a66c2}
+.social a[aria-label="Facebook"]{--b:#1877f2}
+.social a[aria-label]:hover{background:var(--b);border-color:var(--b);color:#fff;box-shadow:0 0 0 1px var(--b),0 0 22px 2px color-mix(in srgb,var(--b) 55%,transparent),0 0 46px 6px color-mix(in srgb,var(--b) 25%,transparent)}
 .lead{max-width:80ch;margin:0 0 1.5rem;font-size:1.05rem;line-height:1.75}
 .contact{padding-bottom:4rem}
 .contact .links{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1rem}
