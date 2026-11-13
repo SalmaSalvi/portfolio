@@ -202,6 +202,10 @@ header.top nav a.on{border-color:var(--accent);color:var(--accent-text)}
 .social a[aria-label="LinkedIn"]{--b:#0a66c2}
 .social a[aria-label="Facebook"]{--b:#1877f2}
 .social a[aria-label]:hover{background:var(--b);border-color:var(--b);color:#fff;box-shadow:0 0 0 1px var(--b),0 0 22px 2px color-mix(in srgb,var(--b) 55%,transparent),0 0 46px 6px color-mix(in srgb,var(--b) 25%,transparent)}
+/* activities */
+.hl.wide{grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr))}
+.hl h4{font:700 .95rem var(--sans);color:var(--accent-text);margin:.1rem 0 .5rem}
+.hl p+p{margin-top:.7rem}
 .lead{max-width:80ch;margin:0 0 1.5rem;font-size:1.05rem;line-height:1.75}
 .contact{padding-bottom:4rem}
 .contact .links{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1rem}
