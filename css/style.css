@@ -214,6 +214,17 @@ header.top nav a.on{border-color:var(--accent);color:var(--accent-text)}
 .crow{display:flex;align-items:center;justify-content:space-between;gap:1rem 1.5rem;flex-wrap:wrap}
 .crow .social,.crow .cvwrap{margin:0}
 .crow .cvwrap{margin-left:auto}
+/* contact row on phones: keep Download CV beside the icons */
+.btn.cv{white-space:nowrap}
+@media(max-width:640px){
+  .crow{flex-wrap:nowrap;gap:.6rem}
+  .crow .social{gap:.5rem}
+  .crow .social a{width:2.6rem;height:2.6rem}
+  .crow .social svg{width:1.15rem;height:1.15rem}
+  .btn.cv{padding:.55rem 1rem;font-size:.9rem;gap:.4rem}
+  .btn.cv svg{width:1.05rem;height:1.05rem}
+}
+@media(max-width:340px){.crow{flex-wrap:wrap}}
 .lead{max-width:none;margin:0 0 1.5rem;font-size:1.05rem;line-height:1.75;text-align:justify;-webkit-hyphens:auto;hyphens:auto}
 .contact{padding-bottom:4rem}
 .contact .links{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1rem}
