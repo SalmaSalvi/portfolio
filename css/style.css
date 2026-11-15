@@ -226,6 +226,11 @@ header.top nav a.on{border-color:var(--accent);color:var(--accent-text)}
 }
 @media(max-width:340px){.crow .social{gap:.35rem}.crow .social a{width:2.3rem;height:2.3rem}.crow .social svg{width:1rem;height:1rem}.btn.cv{padding:.5rem .75rem;font-size:.85rem;gap:.3rem}.btn.cv svg{width:.95rem;height:.95rem}}
 @media(max-width:290px){.crow{flex-wrap:wrap}}
+/* WhatsApp icon + 4-icon mobile fit */
+.social a[aria-label="WhatsApp"]{--b:#25d366}
+@media (prefers-reduced-motion:no-preference){.social a:nth-child(4)::after{animation-delay:1.5s}}
+@media(max-width:640px){.crow .social{gap:.4rem}.crow .social a{width:2.3rem;height:2.3rem}.crow .social svg{width:1.05rem;height:1.05rem}.btn.cv{padding:.5rem .8rem;font-size:.85rem}}
+@media(max-width:340px){.crow .social{gap:.3rem}.crow .social a{width:2rem;height:2rem}.crow .social svg{width:.9rem;height:.9rem}.btn.cv{padding:.45rem .6rem;font-size:.8rem;gap:.25rem}.btn.cv svg{width:.85rem;height:.85rem}}
 .lead{max-width:none;margin:0 0 1.5rem;font-size:1.05rem;line-height:1.75;text-align:justify;-webkit-hyphens:auto;hyphens:auto}
 .contact{padding-bottom:4rem}
 .contact .links{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1rem}
