@@ -37,6 +37,7 @@ var d=document,btn=d.querySelector(".btn.cv");
 if(!btn)return;
 function txt(e){return e?e.textContent.replace(/\s+/g," ").trim():""}
 function clean(s){return String(s).replace(/[\u2018\u2019]/g,"'").replace(/[\u201C\u201D]/g,'"').replace(/[\u2013\u2014]/g,"-").replace(/\s*\u00D7\s*/g," with ").replace(/\s*\u00B7\s*/g,", ").replace(/\u00A0/g," ").replace(/[^\x20-\x7E\xA1-\xFF]/g,"").replace(/\s+/g," ").trim()}
+function phone(){var a=d.querySelector('a[href*="wa.me/"]');if(!a)return"";var n=(a.getAttribute("href").match(/wa\.me\/(\d+)/)||[])[1]||"";if(!n)return"";return n.indexOf("880")===0&&n.length===13?"+880 "+n.slice(3,7)+"-"+n.slice(7):"+"+n}
 function gather(){
   var m=d.querySelector("main"),mail=d.querySelector('a[href^="mailto:"]'),li=d.querySelector('a[href*="linkedin.com/in"]');
   function entries(sec){return [].map.call(d.querySelectorAll(sec+" .entry"),function(e){
@@ -49,6 +50,7 @@ function gather(){
     title:m.getAttribute("data-cv-title")||"",
     loc:txt(d.querySelector(".hero .loc")),
     email:mail?mail.getAttribute("href").replace("mailto:",""):"",
+    phone:phone(),
     linkedin:li?li.getAttribute("href").replace(/^https?:\/\/(www\.)?/,"").replace(/\/$/,""):"",
     summary:txt(d.querySelector(".lead")),
     exp:entries("#experience"),edu:entries("#education"),
@@ -83,7 +85,7 @@ async function build(x){
     e.bullets.forEach(function(b){para(b,{bullet:true,indent:14})});gap(7)}
   para(x.name,{bold:true,size:22,align:"center"});
   para(x.title,{bold:true,size:11.5,align:"center"});gap(2);
-  para([x.loc,x.email,x.linkedin].filter(Boolean).join(" | "),{size:10,align:"center"});
+  para([x.loc,x.email,x.phone,x.linkedin].filter(Boolean).join(" | "),{size:10,align:"center"});
   head("Professional Summary");para(x.summary);
   head("Work Experience");x.exp.forEach(item);
   head("Education");x.edu.forEach(item);
@@ -96,12 +98,13 @@ async function build(x){
   return doc.save();
 }
 function save(url,name){var a=d.createElement("a");a.href=url;a.download=name;d.body.appendChild(a);a.click();a.remove()}
+function fail(){alert("Sorry, the CV could not be generated. Please try again or contact by email.")}
 btn.addEventListener("click",function(e){
-  if(!window.PDFLib)return;
   e.preventDefault();
+  if(!window.PDFLib){fail();return}
   build(gather()).then(function(bytes){
     var url=URL.createObjectURL(new Blob([bytes],{type:"application/pdf"}));
     save(url,"Salma-Akter-CV.pdf");setTimeout(function(){URL.revokeObjectURL(url)},4000);
-  }).catch(function(){save(btn.getAttribute("href"),"Salma-Akter-CV.pdf")});
+  }).catch(fail);
 });
 })();
