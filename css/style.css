@@ -206,6 +206,14 @@ header.top nav a.on{border-color:var(--accent);color:var(--accent-text)}
 .hl.wide{grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr))}
 .hl h4{font:700 .95rem var(--sans);color:var(--accent-text);margin:.1rem 0 .5rem}
 .hl p+p{margin-top:.7rem}
+/* download CV */
+.cvwrap{margin-top:1.1rem}
+.btn.cv{display:inline-flex;align-items:center;gap:.55rem;border-radius:999px;padding-left:1.6rem;padding-right:1.6rem}
+.btn.cv svg{width:1.2rem;height:1.2rem;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+/* contact row: icons left, Download CV right */
+.crow{display:flex;align-items:center;justify-content:space-between;gap:1rem 1.5rem;flex-wrap:wrap}
+.crow .social,.crow .cvwrap{margin:0}
+.crow .cvwrap{margin-left:auto}
 .lead{max-width:none;margin:0 0 1.5rem;font-size:1.05rem;line-height:1.75;text-align:justify;-webkit-hyphens:auto;hyphens:auto}
 .contact{padding-bottom:4rem}
 .contact .links{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1rem}
