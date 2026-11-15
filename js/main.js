@@ -64,10 +64,16 @@ async function build(x){
   function np(){page=doc.addPage([W,H]);y=H-M}
   np();
   function wrap(t,f,s,w){var out=[],cur="";t.split(" ").forEach(function(wd){var tr=cur?cur+" "+wd:wd;if(cur&&f.widthOfTextAtSize(tr,s)>w){out.push(cur);cur=wd}else cur=tr});if(cur)out.push(cur);return out}
-  function para(t,o){o=o||{};t=clean(t);if(!t)return;var f=o.bold?B:F,s=o.size||10.5,lh=s*1.4,ind=o.indent||0;
-    wrap(t,f,s,CW-ind).forEach(function(l,i){if(y-lh<M)np();
+  function justLine(l,x,by,f,s,ws){var PLb=PL;page.setFont(f);var key=page.getFont()[1];
+    page.pushOperators(PLb.beginText(),PLb.setFillingRgbColor(0,0,0),PLb.setFontAndSize(key,s),PLb.setWordSpacing(ws),PLb.moveText(x,by),PLb.showText(f.encodeText(l)),PLb.setWordSpacing(0),PLb.endText())}
+  function para(t,o){o=o||{};t=clean(t);if(!t)return;var f=o.bold?B:F,s=o.size||10.5,lh=s*1.4,ind=o.indent||0,w=CW-ind,al=o.align||"justify",ls=wrap(t,f,s,w);
+    ls.forEach(function(l,i){if(y-lh<M)np();
       if(o.bullet&&i===0)page.drawText("\u2022",{x:M+2,y:y-s,size:s,font:F,color:K});
-      page.drawText(l,{x:M+ind,y:y-s,size:s,font:f,color:K});y-=lh})}
+      var lw=f.widthOfTextAtSize(l,s),x=M+ind,n=l.split(" ").length-1;
+      if(al==="center")page.drawText(l,{x:M+(CW-lw)/2,y:y-s,size:s,font:f,color:K});
+      else if(al==="justify"&&i<ls.length-1&&n>0&&(w-lw)/n<8)justLine(l,x,y-s,f,s,(w-lw)/n);
+      else page.drawText(l,{x:x,y:y-s,size:s,font:f,color:K});
+      y-=lh})}
   function gap(g){y-=g}
   function head(t){if(y-70<M)np();gap(10);para(t.toUpperCase(),{bold:true,size:11.5});
     page.drawLine({start:{x:M,y:y+1},end:{x:W-M,y:y+1},thickness:.8,color:K});gap(5)}
@@ -75,9 +81,9 @@ async function build(x){
     var sub=[e.org,e.when].filter(Boolean).join(" | ");para(sub);
     e.paras.forEach(function(p){para(p)});
     e.bullets.forEach(function(b){para(b,{bullet:true,indent:14})});gap(7)}
-  para(x.name,{bold:true,size:22});
-  para(x.title,{bold:true,size:11.5});gap(2);
-  para([x.loc,x.email,x.linkedin].filter(Boolean).join(" | "),{size:10});
+  para(x.name,{bold:true,size:22,align:"center"});
+  para(x.title,{bold:true,size:11.5,align:"center"});gap(2);
+  para([x.loc,x.email,x.linkedin].filter(Boolean).join(" | "),{size:10,align:"center"});
   head("Professional Summary");para(x.summary);
   head("Work Experience");x.exp.forEach(item);
   head("Education");x.edu.forEach(item);
